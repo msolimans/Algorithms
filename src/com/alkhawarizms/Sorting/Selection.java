@@ -2,30 +2,31 @@ package com.alkhawarizms.Sorting;
 
 /**
  * Created by msoliman on 1/24/17.
- */
-public class Selection {
-
-/*
-Description:
+ * O(n^2), NOT STABLE, IN PLACE
+ * Description:
     Selection sort loops through elements and find the minimal value then swap it with the current index or the marker of the sorted partition or sublist
     In-place sorting algorithm
     Not stable sort (which means it is not keeping the same order of duplicates
-Time Complexity:
-    Worst case:     O(n^2)
-    Average case:   O(n^2)
-    Best case:      O(n) - in an already sorted list
+ * Time Complexity:
+     Worst case:     O(n^2)
+     Average case:   O(n^2)
+     Best case:      O(n) - in an already sorted list
 
-Tests:
-    int[] o = Selection.sort(new int[]{1,20,3,5,9,18,2,0});
-    int[] o1 = Selection.sort(new int[]{1,2,3,4,5,6);
-    System.out.println(Arrays.toString(o));
-    System.out.println(Arrays.toString(o1));
+ * Tests:
+     int[] o = Selection.sort(new int[]{1,20,3,5,9,18,2,0});
+     int[] o1 = Selection.sort(new int[]{1,2,3,4,5,6);
+     System.out.println(Arrays.toString(o));
+     System.out.println(Arrays.toString(o1));
 
-For more info:
-    https://www.youtube.com/watch?v=fgYlVyrt1vE&list=PLpPXw4zFa0uKKhaSz87IowJnOTzh9tiBk&index=77
-    https://en.wikipedia.org/wiki/Selection_sort
+ * For more info:
+     https://www.youtube.com/watch?v=fgYlVyrt1vE&list=PLpPXw4zFa0uKKhaSz87IowJnOTzh9tiBk&index=77
+     https://en.wikipedia.org/wiki/Selection_sort
 
-*/
+ */
+
+public class Selection {
+
+
     public static int[] sort(int[] items){
         int indx = 0;
 
@@ -42,6 +43,7 @@ For more info:
                 }
 
             if(min < items[indx]) {
+                //Swap with least element we already found
                 items[minIndx] = items[indx];
                 items[indx] = min;
             }

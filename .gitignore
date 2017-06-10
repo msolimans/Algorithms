@@ -1,0 +1,50 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Java template
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+*.pdf
+info/books
+p_18_Island.java
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+.DS_Store
+.idea/description.html
+.idea/inspectionProfiles/
+.idea/misc.xml
+.idea/modules.xml
+.idea/project-template.xml
+.idea/uiDesigner.xml
+.idea/workspace.xml
+Algorithms.iml
+lib/
+out/
+src/.DS_Store
+src/com/.DS_Store
+src/com/alkhawarizms/.DS_Store
+src/com/alkhawarizms/DataStructure/.DS_Store
+src/com/alkhawarizms/DataStructure/Graph/
+src/com/alkhawarizms/DataStructure/Trees/BinarySearchTree.java
+src/com/alkhawarizms/DataStructure/Trees/Heaps.java
+src/com/alkhawarizms/DataStructure/Trees/VectorBinaryTree.java
+src/com/alkhawarizms/Main.java
+src/com/designpattern/Behavioural/
+src/info/

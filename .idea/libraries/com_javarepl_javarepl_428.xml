@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="com.javarepl:javarepl:428" type="repository">
+    <properties maven-id="com.javarepl:javarepl:428" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/javarepl/javarepl/428/javarepl-428.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/javarepl/javarepl/428/javarepl-428.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
