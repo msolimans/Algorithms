@@ -5,6 +5,7 @@ import com.alkhawarizms.DataStructure.Arrays.ArrayBase;
 /**
  * Created by msoliman on 1/21/17.
  */
+
 //Sometimes named List
 public class Vector<E> extends ArrayBase<E> {
     //based on arrays
