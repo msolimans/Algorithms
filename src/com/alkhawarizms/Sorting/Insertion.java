@@ -1,5 +1,7 @@
 package com.alkhawarizms.Sorting;
 
+import java.util.Arrays;
+
 /**
  * Created by msoliman on 1/20/17.
  * O(n^2), Stable, in place
@@ -35,13 +37,17 @@ package com.alkhawarizms.Sorting;
 public class Insertion {
 
     public static int[] sort(int[] list) {
+
+        //loop through all elements in array/list
         for (int i = 1; i <= list.length - 1; i++) {
 
             //current elem (we are starting from index 1)
             int tomove = list[i];
 
 
-            for (int j = i - 1; j > 0; j--) {
+            //loop back to previous elements to the current element we are processing now (to find where correctly should we insert it)
+            for (int j = i - 1; j >= 0; j--) {
+
                 //if current elem is greater than its previous elem, stop the loop and move forward to next elem
                 if (tomove > list[j])
                     break;
@@ -56,5 +62,9 @@ public class Insertion {
 
         return list;
 
+    }
+
+    public static  void main(String[] args){
+        System.out.println(Arrays.toString(sort(new int[] {9,3,2,1,2})));
     }
 }
