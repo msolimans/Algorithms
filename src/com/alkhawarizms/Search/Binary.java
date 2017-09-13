@@ -16,6 +16,7 @@ public class Binary {
     //================================================================================
 
     public static int search(int[] sorted, int term){
+
         int min = 0;
         int max = sorted.length - 1;
 
@@ -38,11 +39,15 @@ public class Binary {
     //================================================================================
 
     public static  int search2(int[] sorted, int term){
+
         return search2(sorted, term, 0, sorted.length-1);
     }
 
     static int search2(int[] sorted, int term, int start, int end){
-        int mid = (end - start) / 2;
+        if(start >= end)
+            return -1;
+
+        int mid = ( start + end ) / 2;
         int guess = sorted[mid];
         //stopping conditions
         if(guess == term)
@@ -64,7 +69,12 @@ public class Binary {
 
     //testing
     public  static void main(String[] args){
-        System.out.println(Binary.search(new int[]{1,2,3,4,5,6,7}, 4));
-        System.out.println(Binary.search2(new int[]{1,2,3,4,5,6,7}, 4));
+        System.out.println(Binary.search(new int[]{1,2,3,3,4,5,6,7}, 4));
+        System.out.println(Binary.search2(new int[]{1,2,3,3,4,5,6,7}, 4));
+        System.out.println(Binary.search2(new int[]{1,2,3,3,4,5,6,7}, 7));
+        System.out.println(Binary.search2(new int[]{1,2,3,3,4,5,6,7}, 1));
+        System.out.println(Binary.search2(new int[]{1}, 1));
+        System.out.println(Binary.search2(new int[]{1}, 0));
+        System.out.println(Binary.search2(new int[]{}, 0));
     }
 }
