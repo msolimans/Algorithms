@@ -34,16 +34,16 @@ public class Bucket {
 
     }
 
-    public int[] sort(int[] items, int bk){
+    public int[] sort(int[] items, int bucketsCount){
         if(items == null || items.length == 0)
             return  null;
 
-        //list or arraylist
-        List<Integer>[] buckets = new ArrayList[bk];
+        //array of ArrayList, aech item is an ArrayList
+        List<Integer>[] buckets = new ArrayList[bucketsCount];
 
         for(int i: items){
             //find where to save ... its bucket (space)
-            int indx = (int) Math.floor(i/bk);
+            int indx = (int) Math.floor(i/bucketsCount);
             if(buckets[indx] == null){
                 buckets[indx] = new ArrayList<>();
             }
@@ -56,7 +56,7 @@ public class Bucket {
             if(bucket != null){
                 //sort first, items should be sorted using some linear sorting algorithm, we can use CountingSort O(n)
                 //Collections.sort(bucket) can be used for simplicity too - Insertion Sort can be used for small sized arrays
-                int[] sorted = Counting.sort(bucket.stream().filter( t -> t!=null).mapToInt(t -> t).toArray());
+                int[] sorted = new Counting().sort(bucket.stream().filter( t -> t!=null).mapToInt(t -> t).toArray());
 
                 //list them for output
                 for(int i : sorted){
