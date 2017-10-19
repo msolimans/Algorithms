@@ -3,35 +3,42 @@ package com.g4g.basic;
 import java.util.Arrays;
 import java.util.Scanner;
 
-/*
+//Sort the array
+//Show Topic Tags
+/**
+ * Sort
+ * Array
+ * Counting
+ */
 
-Given a random set of numbers, Print them in sorted order.
+/*Description*/
+//**************************************************************
+//Given a random set of numbers, Print them in sorted order.
+//
+//Input:
+//The first line of input contains an integer T denoting the number of test cases. The description of T test cases follows. The first line of each test case contains a single integer N denoting the size of array. The second line contains N space-separated integers A1, A2, ..., AN denoting the elements of the array.
+//
+//Output:
+//Print each sorted array in a separate line. For each array its numbers should be seperated by space.
+//
+//Constraints:                    => Analysis Tips
+//1 ≤ T ≤ 10                      => test cases at most is 10 which is not a big issue to use counting sort
+//1 ≤ N ≤ 1000                    => as long as the numbers are positive it is easy to implement counting sort O(n+k) .. k is also constant here (100)
+//1 ≤A[i]<100                     => item values are not too big, so counts array, auxiliary space, will be small (100 items)
+//
+//Example:
+//Input:
+//1
+//2
+//3 1
+//
+//Output:
+//1 3
+//
+//http://practice.geeksforgeeks.org/problems/sort-the-array/0
+//
+//** For More Input/Output Examples Use 'Expected Output' option **
 
-Input:
-The first line of input contains an integer T denoting the number of test cases. The description of T test cases follows. The first line of each test case contains a single integer N denoting the size of array. The second line contains N space-separated integers A1, A2, ..., AN denoting the elements of the array.
-
-Output:
-Print each sorted array in a separate line. For each array its numbers should be seperated by space.
-
-Constraints:                    => Analysis Tips
-1 ≤ T ≤ 10                      => test cases at most is 10 which is not a big issue to use counting sort
-1 ≤ N ≤ 1000                    => as long as the numbers are positive it is easy to implement counting sort O(n+k) .. k is also constant here (100)
-1 ≤A[i]<100                     => item values are not too big, so counts array, auxiliary space, will be small (100 items)
-
-Example:
-Input:
-1
-2
-3 1
-
-Output:
-1 3
-
-http://practice.geeksforgeeks.org/problems/sort-the-array/0
-
-** For More Input/Output Examples Use 'Expected Output' option **
-
-* */
 public class SortTheArray {
 
     public static void main(String[] args) {
