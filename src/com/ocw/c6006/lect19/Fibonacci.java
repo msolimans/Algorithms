@@ -25,7 +25,7 @@ import java.util.Map;
  *
  */
 
-public class fibonacci {
+public class Fibonacci {
     static Map<Integer,Long> mem = new HashMap<>();
 
     public static void main(String[] args){
