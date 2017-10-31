@@ -33,6 +33,7 @@ public class Fibonacci {
         System.out.println(naive_fib(10));
         System.out.println(memoizedTopDownFib(10));
         System.out.println(memoizedBottomUpFib(10));
+        System.out.println(memoizedBottomUpFib2(10));
 
     }
 
@@ -83,7 +84,7 @@ public class Fibonacci {
     // it is considered as a toplogical sort or form as we move from bottom to up
     //Time = O(n), Space = O(n)
     static long memoizedBottomUpFib(int n){
-        int[] arr = new int[n];
+        int[] arr = new int[n+1];
         //fib(0) = 1
         arr[0] = 1;
         //fib(1) = 1
@@ -121,22 +122,5 @@ public class Fibonacci {
 
         return  prev;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
