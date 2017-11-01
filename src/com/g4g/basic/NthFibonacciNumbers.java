@@ -42,9 +42,9 @@ import java.util.Scanner;
 //        1
 //        5
 //******************************************************************************************************************
-//Companies: VMWare, Oracle
+//Companies: MAQ-Software, MakeMyTrip
 //******************************************************************************************************************
-//Link: http://practice.geeksforgeeks.org/problems/stickler-theif/0/?ref=self
+//Link: http://practice.geeksforgeeks.org/problems/nth-fibonacci-number/0
 //******************************************************************************************************************
 
 public class NthFibonacciNumbers {
