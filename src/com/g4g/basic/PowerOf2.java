@@ -82,9 +82,13 @@ public class PowerOf2 {
 
     }
 
-    static boolean run2(int n){
+    //much simpler
+    static boolean run2(long n){
+        //continue to get remainders and as long it is 0 divide by 2 .... until you get more than 0 .. then make sure the number == 1 otherwise return false
+        //e.g. 8 = 8 / 2 = 4 / 2 = 2 / 2 = 1 => TRUE
         while(n % 2 == 0)
             n = n / 2;
+
         return n == 1;
     }
 
