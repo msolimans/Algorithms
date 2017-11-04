@@ -1,15 +1,13 @@
 package com.g4g.Easy;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 
 //Lowest Common Ancestor in a BST (Function Problem)
 //Show Topic Tags
 
 /**
- *
+ * BST, Tree
  */
 
 /*Description*/
@@ -49,12 +47,12 @@ import java.util.Scanner;
 //     3        7
 //               \
 //                8
-//        here the LCA of 7 and 8 is 7 .
+//    Here the LCA of 7 and 8 is 7.
 //
 //
-//        Note:The Input/Ouput format and Example given are used for system's internal purpose, and should be used by a user for Expected Output only. As it is a function problem, hence a user should not read any input from stdin/console. The task is to complete the function specified, and not to write the full code.
+//    Note:The Input/Ouput format and Example given are used for system's internal purpose, and should be used by a user for Expected Output only. As it is a function problem, hence a user should not read any input from stdin/console. The task is to complete the function specified, and not to write the full code.
 //******************************************************************************************************************
-//Companies: VMWare, Oracle
+//Companies: Synopsys, Microsoft, Amazon, Accolite
 //******************************************************************************************************************
 //Link:http://practice.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-bst/1
 //******************************************************************************************************************
@@ -128,27 +126,28 @@ public class LowestCommonAncestorInBST {
                 bst.add(scan.nextInt());
             }
 
-
-            bst.print();
+            //bst.print();
 
             int n1= scan.nextInt();
             int n2 = scan.nextInt();
-            System.out.println(lca(bst.root, n1,n2));
+            System.out.println(lca(bst.root, n1,n2).data);
         }
     }
 
-    static boolean traverseToNode(Node node, int n, int level, Map<Integer, Node> path){
+    static boolean traverseToNode(Node node, int n, int level, List<Node> path){
         //stopping conditions
         //search exhausted without finding the element/item.
         if(node == null)
             return false;
+
         //search finished, once item found, save it and stop recursion
-        if(node.data == n){
-            path.put(level, node);
+        if(node.data == n) {
+            path.add(node);
             return  true;
         }
 
-        path.put(level, node);
+        path.add(node);
+
         //traverse to the left in case the value is LESS than the current node's value
         if(n < node.data)
             return traverseToNode(node.left, n, ++level, path);
@@ -159,38 +158,53 @@ public class LowestCommonAncestorInBST {
     }
 
     //get the common ancestor algorithm here
-    static int findCommonAncestor(Map<Integer, Node> p1, Map<Integer, Node> p2){
+    static int findCommonAncestor(List<Node> p1, List<Node> p2){
         //make sure always p1 is smaller in size (performance)
         if(p1.size() > p2.size())
             return  findCommonAncestor(p2,p1);
 
-        int max = -1;
-        for(int l: p1.keySet()){
-            if(l > max && p2.containsKey(l)){
-                max = l;
+        //int max = -1;
+        int iMax = -1;
+
+        int i = 0;
+
+        while(i < p1.size()){
+
+            Node n1 = p1.get(i);
+            Node n2 = p2.get(i);
+
+            //index represents the level
+            if(n1.data == n2.data ){
+                //the highest level represents the least common
+                iMax = i;
             }
+
+            i++;
         }
 
-        return max;
+        return iMax;
     }
 
-    //just copy the following code to make it workable in g4g
+    //Just copy the following code to make it workable in G4G
     static Node lca(Node node, int n1, int n2)
     {
         //Search for the first item (n1)
         //Store its path, each time you visit a node store the level along with Node value.
-        Map<Integer, Node> n1Path = new HashMap<>();
+        //Map<Integer, Node> n1Path = new HashMap<>();
+        ArrayList<Node> n1Path = new ArrayList<>();
         traverseToNode(node, n1, 0, n1Path);
 
         //Search for the second item (n2)
-        Map<Integer, Node> n2Path = new HashMap<>();
+        //Map<Integer, Node> n2Path = new HashMap<>();
+        ArrayList<Node> n2Path = new ArrayList<>();
         traverseToNode(node, n2, 0, n2Path);
 
 
         //find the highest common level now is the intersection in-between both nodes (n1,n2)
         int level = findCommonAncestor(n1Path, n2Path);
+
         //get it from any of the stored paths
-        return n1Path.get(level);
+        return level <= n1Path.size() - 1? n1Path.get(level): n2Path.get(level);
 
         //can be simplified to
         //return n1Path.get(findCommonAncestor(n1Path, n2Path));
