@@ -1,6 +1,8 @@
 package com.probs;
 
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.PriorityQueue;
 import java.util.Stack;
 
 /**
@@ -68,6 +70,7 @@ public class p_29_FindKSmallestNumberInBST {
         System.out.println(findSmallest(bst.root, 2));
         System.out.println(findSmallest1(bst.root, 2));
         System.out.println(findSmallest2(bst.root, 2));
+        System.out.println(findSmallest3(bst.root, 2));
 
 
     }
@@ -75,7 +78,10 @@ public class p_29_FindKSmallestNumberInBST {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Non-Recursive Algorithm
     //Same concept however we used here Stack and HashSet to preserve visited nodes
+    //O(n), space: O(n) for stack, also  O(n) space more for HashSet
+    //(worst especially in case of all nodes were stored to the left side or right side - e.g. 9 8 7 6 5 4 3 2 1
     static int findSmallest(Node node, int n) {
+        //we need stack as auxiliary space
         Stack<Node> stack = new Stack<>();
         stack.push(node);
         HashSet<Node> visited = new HashSet<>();
@@ -109,6 +115,7 @@ public class p_29_FindKSmallestNumberInBST {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Non-Recursive Algorithm
     //Used here stack only
+    //O(n), Space: O(n) for stack (worst especially in case of all nodes were stored to the left side or right side - e.g. 9 8 7 6 5 4 3 2 1
     static int findSmallest1(Node node, int n){
         Stack<Node> stack = new Stack<>();
 
@@ -150,6 +157,7 @@ public class p_29_FindKSmallestNumberInBST {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Recursive Algorithm
     //this is in-order traversal, each visit I should increment "visited" until we reach "n"
+    //O(n)
     static int visited = 0;
 
     static int findSmallest2(Node node, int n){
@@ -170,6 +178,46 @@ public class p_29_FindKSmallestNumberInBST {
 
         //number specified (n) is greater than size of tree (-1)
         return -1;
+
+    }
+
+    //O(n logk) where k is the size of the heap
+    //Only shown as possible solution.
+    static  int findSmallest3(Node node, int n){
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>(Collections.reverseOrder());
+
+        findSmallest3(node, n, minHeap);
+
+        //make sure we have a heap of the same size as n
+        if(minHeap.size() < n)
+            return  -1;
+
+        return  minHeap.poll();
+    }
+
+    static void findSmallest3(Node node, int n, PriorityQueue<Integer> minHeap){
+        if(node == null)
+            return;
+
+        //this is inorder traversal
+
+        //visit all left side
+        if(node.left != null)
+            findSmallest3(node.left, n, minHeap);
+
+        //node
+        if(minHeap.size() < n )
+            minHeap.add(node.val);
+        else
+            return;
+
+
+        //visit all right side
+        if(node.right != null)
+            findSmallest3(node.right, n, minHeap);
+
+
+
 
     }
 
