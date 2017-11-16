@@ -84,7 +84,7 @@ public class PowerOf2 {
 
     //much simpler
     static boolean run2(long n){
-        //continue to get remainders and as long it is 0 divide by 2 .... until you get more than 0 .. then make sure the number == 1 otherwise return false
+        //continue to get divisible and as long its remainder is 0 (divide by 2) .... until you get more than 0 .. then make sure the number == 1 otherwise return false
         //e.g. 8 = 8 / 2 = 4 / 2 = 2 / 2 = 1 => TRUE
         while(n % 2 == 0)
             n = n / 2;
@@ -92,4 +92,12 @@ public class PowerOf2 {
         return n == 1;
     }
 
+    //math trick, easy and simple too
+    //if we noticed the previous number to any number that is pow of 2 have all bits set to "1" except that last BIT so if we bitwise AND both number, it should give us zero. let's have examples
+    //1 => 0001 and 2 => 0010       => bitwise AND both 0001 & 0010 = 0
+    //3 => 0011 and 4 => 0100       => bitwise AND both 0011 & 0100 = 0
+    //7 => 0111 and 8 => 1000       => bitwise AND both 0111 & 1000 = 0
+    static boolean run3(long n){
+        return (n & (n-1)) == 0;
+    }
 }
