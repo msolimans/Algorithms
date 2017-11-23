@@ -1,6 +1,5 @@
-package com.g4g.Easy;
+package com.g4g.easy;
 
-import java.util.PriorityQueue;
 import java.util.Scanner;
 
 
