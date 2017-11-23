@@ -7,7 +7,7 @@ type TwoDArray struct{
 
 }
 
-func New(rows,cols int) *TwoDArray{
+func NewTwoDArray(rows,cols int) *TwoDArray{
 	arr := make([]interface{}, rows * cols) //all items should be here
 	return &TwoDArray{ arr, rows, cols }
 }
@@ -35,6 +35,10 @@ func (self *TwoDArray) InsertAt(x, y int, val interface{}) {
 
 func (self *TwoDArray) GetAt(x,y int) interface{}{
 	return self.arr[self.index(x,y)]
+}
+
+func (self *TwoDArray) Get() []interface{}{
+	return self.arr
 }
 
 
