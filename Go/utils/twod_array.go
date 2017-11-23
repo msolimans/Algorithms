@@ -1,6 +1,6 @@
 package utils
 
-
+//Simple Representation of 2 dimensional array with rows/cols
 type TwoDArray struct{
 	arr []interface{}
 	rows, cols int
@@ -12,16 +12,29 @@ func New(rows,cols int) *TwoDArray{
 	return &TwoDArray{ arr, rows, cols }
 }
 
-func (self *TwoDArray) index(i,j int) int{
-	return i*self.cols+j;
+//convert from 2 dimensional space to 1 dimensional space
+func (self *TwoDArray) index(x,y int) int{
+	return x*self.cols+y;
 }
 
-func (self *TwoDArray) InsertAt(i, j int, val interface{}) {
-	self.arr[self.index(i,j)] = val
+func (self *TwoDArray) coord(i int) (x,y int){
+	x = i % self.cols
+	y = i / self.cols
+	return
 }
 
-func (self *TwoDArray) GetAt(i,j int) interface{}{
-	return self.arr[i*self.cols + j]
+//should return rows/cols of array
+func (self *TwoDArray) Len() (rows, cols int){
+	return self.rows, self.cols
+}
+
+//insert specific item at x and y
+func (self *TwoDArray) InsertAt(x, y int, val interface{}) {
+	self.arr[self.index(x,y)] = val
+}
+
+func (self *TwoDArray) GetAt(x,y int) interface{}{
+	return self.arr[self.index(x,y)]
 }
 
 
