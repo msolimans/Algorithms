@@ -1,4 +1,4 @@
-package com.g4g.Easy;
+package com.g4g.easy;
 
 import java.util.Scanner;
 import java.util.Stack;

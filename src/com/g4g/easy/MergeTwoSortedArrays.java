@@ -1,6 +1,5 @@
-package com.g4g.Easy;
+package com.g4g.easy;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Scanner;
 
