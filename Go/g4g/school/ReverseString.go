@@ -39,7 +39,10 @@ package main
 //Link: http://practice.geeksforgeeks.org/problems/sum-of-array-elements/0
 //******************************************************************************************************************
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/golang-collections/collections/stack"
+)
 
 func main() {
 
@@ -63,6 +66,7 @@ func main() {
 		}
 
 		fmt.Println(reverseString(current))
+		fmt.Println(string(reverseStringUsingStack(current)))
 	}
 
 
@@ -86,3 +90,27 @@ func reverseString(arr []byte) string {
 	return string(arr)
 
 }
+
+
+//reverse byte array and returns result as string
+func reverseStringUsingStack(arr []byte) []byte {
+
+	 //push all elems from array into stack
+
+	 stack := stack.New()
+	 for _,b := range arr{
+		 stack.Push(b)
+	 }
+	 //pop from stack back into array
+	for i:=0;stack.Len() > 0;i++{
+		if b, ok := stack.Pop().(byte); ok != true{
+			//type assertion
+			arr[i] = b
+		}
+	}
+
+	return arr
+}
+
+
+
