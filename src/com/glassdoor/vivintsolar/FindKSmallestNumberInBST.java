@@ -7,8 +7,9 @@ import java.util.*;
  * Given a binary search tree, find the K smallest number in BST in case of found, otherwise return -1
  */
 
+
 class BST {
-    Node root;
+    public Node root;
     public BST(){
         root = null;
     }
@@ -39,22 +40,33 @@ class BST {
         }
 
     }
+
+
+
+
 }
 
-class Node {
+
+final class Node{
+    int val;
     Node left;
     Node right;
-    int val;
-    public Node(int n){
-        val = n;
-        left = right = null;
+
+    public Node getLeft(){
+        return left;
     }
 
-
+    public Node(int n){
+        this.val = n;
+    }
 }
+
 
 
 public class FindKSmallestNumberInBST {
+
+
+
 
     public static void main(String[] args){
 
