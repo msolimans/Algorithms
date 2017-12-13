@@ -1,5 +1,8 @@
 package com.alkhawarizms.Sorting;
 
+import java.util.Arrays;
+import java.util.Scanner;
+
 /**
  * Created by msoliman on 1/24/17.
  * O(n^2), NOT STABLE, IN PLACE
@@ -26,8 +29,25 @@ package com.alkhawarizms.Sorting;
 
 public class Selection {
 
+    public static void main(String[] args){
+        System.out.println(Arrays.toString(new Selection().sort(new int[]{1,22,9,2,-1})));
+        System.out.println(Arrays.toString(new Selection().sort(new int[]{-1})));
+        System.out.println(Arrays.toString(new Selection().sort(new int[]{})));
 
-    public static int[] sort(int[] items){
+        Scanner scan = new Scanner(System.in);
+
+        int i = scan.nextInt();
+        int j = scan.nextInt();
+        int j1 = scan.nextInt();
+        int j2 = scan.nextInt();
+        System.out.println(i + " " + j);
+
+
+
+    }
+
+
+    public int[] sort(int[] items){
         int indx = 0;
 
         while(indx < items.length - 2){

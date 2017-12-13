@@ -59,8 +59,8 @@ public class FindTheElementThatAppearsOnceInSortedArray {
                 arr[i] = scan.nextInt();
             }
 
-            int result = run(arr);
-            System.out.println(result);
+            System.out.println(run2(arr, arr.length));
+
         }
     }
 
@@ -81,6 +81,54 @@ public class FindTheElementThatAppearsOnceInSortedArray {
         }
 
         return result;
+    }
+
+//https://www.cryptocompare.com/mining/calculator/eth?HashingPower=172&HashingUnit=MH%2Fs&PowerConsumption=850&CostPerkWh=0.12
+
+    //Divide and conquer (based on binary search)
+    //O(logn)
+    static int run2(int[] arr, int len) {
+        int lo = 0;
+        int hi = len - 1;
+        int mid;
+        int res = 0;
+
+        while ((hi - lo) >= 2) {
+            if (arr[lo] != arr[lo + 1]) {
+                res = lo;
+                break;
+            } else if (arr[hi] != arr[hi - 1]) {
+                res = hi;
+                break;
+            } else {
+                mid = (lo + hi) / 2;
+
+
+                if (isEven(mid - lo + 1)) {
+                    if (arr[mid] == arr[mid - 1]) {
+                        lo = mid + 1;
+                    } else {
+                        hi = mid - 1;
+                    }
+                } else {
+                    if (arr[mid] == arr[mid - 1]) {
+                        hi = mid - 2;
+                    } else if (arr[mid] == arr[mid + 1]) {
+                        lo = mid + 2;
+                    } else {
+                        res = mid;
+                        break;
+                    }
+                }
+            }
+        }
+
+
+        return arr[res];
+    }
+
+    static boolean isEven(int n) {
+        return ((n % 2) == 0);
     }
 
 }

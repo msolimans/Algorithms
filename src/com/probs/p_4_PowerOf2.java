@@ -38,4 +38,6 @@ public class p_4_PowerOf2 {
 
         return isPowerof2;
     }
+
+    //check other solutions in /g4g/basic/PowerOf2
 }

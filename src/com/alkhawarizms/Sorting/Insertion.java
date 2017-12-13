@@ -36,7 +36,7 @@ import java.util.Arrays;
 
 public class Insertion {
 
-    public static int[] sort(int[] list) {
+    public int[] sort(int[] list) {
 
         //loop through all elements in array/list
         for (int i = 1; i <= list.length - 1; i++) {
@@ -66,7 +66,7 @@ public class Insertion {
 
     //Different Impl: No swapping done, but only shifting until we find proper place/index to insert
     //System.out.println(Arrays.toString(sort2(new int[]{0,3,1,4,2,2,1,0,-1}));
-    static int[] sort2(int[] items) {
+    public int[] sort2(int[] items) {
         for (int i = 1; i < items.length; i++) {
             int toMove = items[i];
             int indx = i - 1;
@@ -91,7 +91,7 @@ public class Insertion {
 
     //different impl:  find the proper place/index to insert the item using binary search, insert it and shift
 
-    static void sort3(int[] list) {
+    public void sort3(int[] list) {
         int start = 0;
         int end = 0;
         int mid = 0;
@@ -112,6 +112,6 @@ public class Insertion {
     }
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(sort(new int[]{9, 3, 2, 1, 2})));
+        System.out.println(Arrays.toString(new Insertion().sort(new int[]{9, 3, 2, 1, 2})));
     }
 }

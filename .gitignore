@@ -36,7 +36,7 @@ hs_err_pid*
 .idea/workspace.xml
 Algorithms.iml
 lib/
-out/
+out/production/*
 src/.DS_Store
 src/com/.DS_Store
 src/com/alkhawarizms/.DS_Store
