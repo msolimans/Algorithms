@@ -53,7 +53,7 @@ public class e_409_Palindrome {
             arr[ich]++;
         }
 
-        System.out.println(Arrays.toString(arr));
+        //System.out.println(Arrays.toString(arr));
 
         int result = 0;
 
