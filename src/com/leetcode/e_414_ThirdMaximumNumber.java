@@ -1,10 +1,21 @@
 package com.leetcode;
 
+import java.util.Arrays;
+
+import static java.lang.System.*;
+
 /**
  * Created by msoliman on 2/17/17.
  */
 public class e_414_ThirdMaximumNumber {
+
+
+
+
     public static void main(String[] str) {
+
+
+
         System.out.println(thirdMax(new int[]{1,2,2}));
         System.out.println(thirdMax(new int[]{2,2,3,1}));
         System.out.println(thirdMax(new int[]{3,2,1}));
@@ -19,6 +30,9 @@ public class e_414_ThirdMaximumNumber {
         System.out.println(thirdMax1(new int[]{2, 2, 3, 1}));
         System.out.println(thirdMax1(new int[]{2, 2, 3, 1,8,9,10}));
 */
+
+
+
     }
 
 

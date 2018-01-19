@@ -4,6 +4,8 @@ package com.leetcode;
 //Show Topic Tags
 
 
+import com.leetcode.shared.TreeNode;
+
 import java.util.LinkedList;
 
 /**
@@ -25,14 +27,7 @@ public class e_669_TrimABinarySearchTree {
 
     //This section only used for supporting my tests
     //Supportive code only (not part of solution)
-    public static class TreeNode{
-        public int val;
-        public TreeNode left;
-        public  TreeNode right;
-        public TreeNode(int x){
-            val = x;
-        }
-    }
+
 
     public e_669_TrimABinarySearchTree(){
         root = null;

@@ -4,6 +4,7 @@ package com.leetcode;
 //Show Topic Tags
 
 import com.alkhawarizms.DataStructure.Trees.Tree;
+import com.leetcode.shared.TreeNode;
 
 import java.util.*;
 
@@ -38,16 +39,7 @@ import java.util.*;
 
 public class m_103_BinaryTreezigzagLevelOrderTraversal {
 
-    public static class TreeNode {
-        public int val;
-        public TreeNode left;
-        public TreeNode right;
 
-        public TreeNode(int x) {
-            val = x;
-        }
-
-    }
 
 
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
