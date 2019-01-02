@@ -27,13 +27,7 @@ p_18_Island.java
 hs_err_pid*
 
 .DS_Store
-.idea/description.html
-.idea/inspectionProfiles/
-.idea/misc.xml
-.idea/modules.xml
-.idea/project-template.xml
-.idea/uiDesigner.xml
-.idea/workspace.xml
+
 Algorithms.iml
 lib/
 out/production/*
@@ -48,3 +42,4 @@ src/com/alkhawarizms/DataStructure/Trees/VectorBinaryTree.java
 src/com/alkhawarizms/Main.java
 src/com/designpattern/Behavioural/
 src/info/
+.idea
