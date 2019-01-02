@@ -3,7 +3,7 @@ package com.alkhawarizms.DataStructure.Arrays;
 
 
 /**
- * Created by msoliman on 1/21/17.
+ * Created by msoliman on 1/21/17. d
  */
 public class ArrayBase<E extends Object> implements Comparable<E>{
 
