@@ -17,10 +17,9 @@ import "regexp"
 //Output:  str = "ed,c,bA!$"
 //Ref: https://www.geeksforgeeks.org/reverse-an-array-without-affecting-special-characters/
 
-
 func main() {
 	if res, err := swap("Ab,c,de!$"); err != nil {
-		println("Error :" , err)
+		println("Error :", err)
 	} else {
 		println(res)
 	}
@@ -35,16 +34,15 @@ func swap(str string) (string, error) {
 		return "", err
 	}
 
-
 	runes := []rune(str)
-	for i < j  {
+	for i < j {
 
-		if !re.Match([]byte(string(runes[i]))){
+		if !re.Match([]byte(string(runes[i]))) {
 			i++
 			continue
 		}
 
-		if !re.Match([]byte(string(runes[j]))){
+		if !re.Match([]byte(string(runes[j]))) {
 			j--
 			continue
 		}
