@@ -1,5 +1,9 @@
 package com.g4g.easy;
 
+import org.junit.Test;
+import org.junit.Assert;
+
+
 import java.util.Scanner;
 
 
@@ -67,10 +71,55 @@ public class SubarrayWithGivenSum {
     }
 
 
+    //O(n)
     static String run(int[] arr, int n) {
-        //Map<>
+        //Sliding ًWindow
+        int start = 0, end = 0, sum = 0;
+        while (end < arr.length) {
 
-        return "";
+            if (arr[start] > n) {
+                start++;
+                end++;
+                continue;
+            }
 
+            if (arr[end] > n) {
+                start = end + 1;
+                end++;
+                continue;
+            }
+
+            if (sum + arr[end] > n) {
+                sum -= arr[start];
+                start++;
+                continue;
+            }
+
+            sum += arr[end];
+
+            if (sum == n) {
+                return (start + 1) + " " + (end + 1);
+            }
+
+            end++;
+        }
+
+        return "-1";
+
+    }
+
+    @Test
+    public void TestRun() {
+        int[] notfound = {1, 2, 3};
+        String result = run(notfound, 9);
+        Assert.assertEquals("-1", result);
+
+        int[] found = {1, 2, 5, 3};
+        String fresult = run(found, 10);
+        Assert.assertEquals("2 4", fresult);
+
+        int[] found2 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        String fresult2 = run(found2, 15);
+        Assert.assertEquals("1 5", fresult2);
     }
 }
