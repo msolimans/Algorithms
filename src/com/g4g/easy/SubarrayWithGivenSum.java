@@ -65,25 +65,35 @@ public class SubarrayWithGivenSum {
             int len = scan.nextInt();
             int n = scan.nextInt();
             int[] arr = new int[len];
+            for(int i=0;i<len;i++){
+                arr[i] = scan.nextInt();
+            }
 
-            run(arr, n);
+            System.out.println(run(arr, n));
+
+
         }
     }
 
 
     //O(n)
     static String run(int[] arr, int n) {
-        //Sliding ًWindow
+        if (arr.length == 0) {
+            return "-1";
+        }
+
         int start = 0, end = 0, sum = 0;
-        while (end < arr.length) {
+        while (start < arr.length && end < arr.length) {
 
             if (arr[start] > n) {
+                sum = 0;
                 start++;
                 end++;
                 continue;
             }
 
             if (arr[end] > n) {
+                sum = 0;
                 start = end + 1;
                 end++;
                 continue;
@@ -121,5 +131,11 @@ public class SubarrayWithGivenSum {
         int[] found2 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         String fresult2 = run(found2, 15);
         Assert.assertEquals("1 5", fresult2);
+
+        Assert.assertEquals("2 2", run(found2, 2));
+
+        int[] found3 = {1};
+
+        Assert.assertEquals("-1", run(found3, 2));
     }
 }
