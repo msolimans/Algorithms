@@ -5,6 +5,7 @@ import org.junit.Test;
 
 //Description
 //Find Peak Element in an array, an element is peak iff a[i] >= a[i-1] and a[i] >= a[i+1]
+//Link: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/lecture-1-algorithmic-thinking-peak-finding/
 public class FindPeakInArray {
 
     public static void main(String[] args) {

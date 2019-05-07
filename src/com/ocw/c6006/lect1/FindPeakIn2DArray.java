@@ -1,11 +1,14 @@
 package com.ocw.c6006.lect1;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 //Find Peak Element in a 2D array, where arr[i,j] is a peak when
 // arr[i,j] > arr[i,j-1]
 // arr[i,j] > arr[i,j+1]
 // arr[i,j] > arr[i-1,j]
 // arr[i,j] > arr[i+1,j]
-
+//Link: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/lecture-1-algorithmic-thinking-peak-finding/
 public class FindPeakIn2DArray {
     public static void main(String[] args) {
         System.out.println(GreedyAscentAlgorithm(new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}));
@@ -68,5 +71,10 @@ public class FindPeakIn2DArray {
         return GreeAscentAlgorithm(arr, nmidi, nmidj);
     }
 
+    @Test
+    public void TestGreedyAscentedAlgorithm(){
+        Assert.assertEquals(9, GreedyAscentAlgorithm(new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}));
+        Assert.assertEquals(20, GreedyAscentAlgorithm(new int[][]{{0, 0, 10, 15}, {14, 13, 12, 0}, {15, 0, 11, 17}, {17, 18, 19, 20}}));
+    }
 
 }
