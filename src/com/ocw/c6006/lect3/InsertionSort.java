@@ -13,6 +13,7 @@ public class InsertionSort {
 
     }
 
+    //O(n^2) // at any given step, we can have n swaps (for each step (len n), we may have n work)
     static int[] sort(int[] arr) {
         int i = 0;
 
