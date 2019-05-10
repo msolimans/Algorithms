@@ -19,9 +19,17 @@ public class Heap {
     //insert elem into priority queue
 
     private int[] arr;
-    int size = 0, index = 0;
+    int size = 0, index = 1;
 
 
+    public Heap(int[] arr) {
+        this.arr = arr;
+        this.size = arr.length;
+        index = arr.length ;
+        for (int i=arr.length/2;i > 0; i--){
+            maxHeapify(i);
+        }
+    }
 
     public Heap(int size) {
         arr = new int[size + 1];
@@ -29,11 +37,13 @@ public class Heap {
 
     }
 
-    public int[] getArr(){
+    public int[] getArr() {
         return arr;
     }
+
     void insert(int x) {
         arr[index++] = x;
+        maxHeapify(index - 1);
     }
 
     void insert(int[] xs) {
@@ -42,10 +52,11 @@ public class Heap {
         }
     }
 
+    //bottom to top
     void maxHeapify(int i) {
-        if (i < 1)
+        if (i < 1 )
             return;
-        if (i * 2 <= index && arr[i] < arr[i * 2]) {
+        if (i * 2 < index && arr[i] < arr[i * 2]) {
             //swap
             int temp = arr[i];
             arr[i] = arr[i * 2];
@@ -53,7 +64,7 @@ public class Heap {
 
         }
 
-        if (i * 2 + 1 <= index && arr[i] < arr[i * 2 + 1]) {
+        if (i * 2 + 1 < index && arr[i] < arr[i * 2 + 1]) {
             //swap
             int temp = arr[i];
             arr[i] = arr[i * 2 + 1];
@@ -69,16 +80,16 @@ public class Heap {
         if (index > 0) {
             return arr[1];
         }
-       throw new Exception("Empty");
+        throw new Exception("Empty");
     }
 
     //finds and remove max from priority queue
-    int extractMax() throws  Exception{
+    int extractMax() throws Exception {
         if (index > 0) {
             //swap, remove last element
             int temp = arr[1];
             arr[1] = arr[--index];
-            maxHeapify(0);
+            maxHeapify(1);
 
             return temp;
         }
