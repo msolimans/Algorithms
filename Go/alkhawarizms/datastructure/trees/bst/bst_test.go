@@ -18,7 +18,7 @@ func TestBsTree_Insert(t *testing.T) {
 	assert.True(t, bstree.root.value == 10)
 	assert.True(t, bstree.root.right.value == 20)
 	assert.True(t, bstree.root.left.value == 5)
-
+	//test
 }
 
 func TestBSTNode_Insert(t *testing.T) {
