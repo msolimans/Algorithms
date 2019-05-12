@@ -1,0 +1,22 @@
+version: 2
+jobs:
+
+  build:
+    docker:
+      - image: circleci/openjdk:8
+    steps:
+      - checkout
+      - restore_cache:
+          key: algorithms-{{ checksum "pom.xml" }}
+      - run: mvn dependency:go-offline
+      - save_cache:
+          paths:
+          - ~/.m2
+          key: algorithms-{{ checksum "pom.xml" }}
+      - run: mvn test -B
+
+workflows:
+  version: 2
+  dev:
+    jobs:
+      - build
