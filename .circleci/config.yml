@@ -7,16 +7,21 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: algorithms-{{ checksum "pom.xml" }}
+          keys:
+            - algorithms-{{ checksum "pom.xml" }}
+            - algorithms-
+
       - run: mvn dependency:go-offline
       - save_cache:
           paths:
           - ~/.m2
           key: algorithms-{{ checksum "pom.xml" }}
       - run: mvn test -B
+#            - run: mvn test -B# - run: mvn integration-test
+
 
 workflows:
   version: 2
-  dev:
+  algorithms:
     jobs:
       - build
