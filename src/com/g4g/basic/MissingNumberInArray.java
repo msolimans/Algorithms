@@ -1,7 +1,11 @@
 package com.g4g.basic;
 
-import java.util.Arrays;
-import java.util.Scanner;
+import org.junit.Assert;
+import org.junit.Test;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 
 //Missing number in array
@@ -53,30 +57,70 @@ import java.util.Scanner;
 public class MissingNumberInArray {
 
 
+    public static void main(String[] args) throws IOException {
+        // Using BufferedReader class to take input
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        int T = scan.nextInt();
+        int T = Integer.parseInt(br.readLine());
 
         while (T-- > 0) {
 
-            int n = scan.nextInt();
-            int[] nums = new int[n+1];
+            int n = Integer.parseInt(br.readLine());
+
+            int[] nums = new int[n + 1];
+
+            String line = br.readLine();
+            String[] strs = line.trim().split("\\s+");
 
             //notice the index here as it starts from 1 to n-1 (the number entered in the example in the question was 5 however we have only 4 elements (one missing)
-            for(int i =1;i<n;i++){
+            for (int i = 0; i < n - 1; i++) {
                 //assign the value as 1 (to indicate it exists) otherwise it is 0 (not exist or mentioned in the input)
-                nums[scan.nextInt()] = 1;
+
+                nums[Integer.parseInt(strs[i])] = 1;
+
             }
 
-           //loop through array from 1 to n and check which is missing
-           for(int i=1;i<=n;i++){
-                if(nums[i] == 0)
-                    System.out.println(i);
-           }
+            // loop through array from 1 to n and check which is missing
+
+
+            System.out.println(FindMissing(nums, n));
+           // System.out.println(FindMissingByCount(nums, n));
         }
     }
 
+    public static int FindMissing(int[] arr, int n) {
+        for (int i = 1; i <= n; i++) {
+            if (arr[i] == 0)
+                return i;
+        }
+        return -1;
+    }
+
+    public static int FindMissingByCount(int[] arr, int n) {
+        int expected = 0;
+        for (int i = 1; i <= n; i++) {
+            expected += i;
+        }
+        int actual = 0;
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] == 1) {
+                actual += i;
+            }
+        }
+
+        return expected - actual;
+    }
+
+    @Test
+    public void TestFindMissing() {
+        Assert.assertEquals(4, FindMissing(new int[]{0, 1, 1, 1, 0}, 4));
+        Assert.assertEquals(2, FindMissing(new int[]{0, 1, 0, 1, 1}, 4));
+    }
+  @Test
+    public void TestFindMissingByCount() {
+        Assert.assertEquals(4, FindMissingByCount(new int[]{0, 1, 1, 1, 0}, 4));
+        Assert.assertEquals(2, FindMissingByCount(new int[]{0, 1, 0, 1, 1}, 4));
+    }
 
 
 }
