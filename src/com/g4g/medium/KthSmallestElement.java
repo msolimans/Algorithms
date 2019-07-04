@@ -4,7 +4,6 @@ package com.g4g.medium;
 //Kth smallest element
 //Show Topic Tags
 
-import javafx.util.Pair;
 import org.junit.Assert;
 import org.junit.Test;
 
