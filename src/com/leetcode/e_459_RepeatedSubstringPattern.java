@@ -54,10 +54,8 @@ public class e_459_RepeatedSubstringPattern {
         //window of 2 XOR => 33 33 33 won't work as chars might come not in order e.g. "a . b . b . a"
         //window of 3, Use StringBuilder, Array or 2 Queues
         int window = 1;
-        //int pxor = 0;
-        //int xor = 0;
-        StringBuilder pxor = new StringBuilder();
-        StringBuilder xor = new StringBuilder();
+        StringBuilder prevstr = new StringBuilder();
+        StringBuilder str = new StringBuilder();
 
         while (window <= s.length() / 2) {//equal windows or dist
             if (s.length() % window != 0) {
@@ -66,28 +64,32 @@ public class e_459_RepeatedSubstringPattern {
             }
 
             //verify all windows are the same
-
             for (int i = 0; i < s.length(); i++) {
-                xor.append(s.charAt(i));
+                str.append(s.charAt(i));
 
+                //we collected a full window
                 if ((i+1) % window == 0) {
 
-                    if (pxor.length() != 0 && !pxor.toString().equals(xor.toString())) {
-                        pxor=new StringBuilder();
-                        xor=new StringBuilder();
+                    //check if the current window is similar to the previous one, if not break
+                    if (prevstr.length() != 0 && !prevstr.toString().equals(str.toString())) {
+                        prevstr=new StringBuilder();
+                        str=new StringBuilder();
                         break;
                     }
 
+                    //if we are done with all of them, we reached the end of str then we return true
                     if (i == s.length() - 1) {
                         return true;
                     }
 
-                    //else continue
-                    pxor = xor;
-                    xor=new StringBuilder();
+                    //else continue checking more windows
+                    prevstr = str;
+                    //reset current str window
+                    str=new StringBuilder();
                 }
             }
 
+            //increase window size
             window++;
         }
 
@@ -99,8 +101,8 @@ public class e_459_RepeatedSubstringPattern {
         Assert.assertTrue(repeatedSubstringPattern("abab"));
         Assert.assertFalse(repeatedSubstringPattern("abac"));
         Assert.assertFalse(repeatedSubstringPattern("aba"));
-        Assert.assertEquals(true, repeatedSubstringPattern("abcabcabcabc"));
-        Assert.assertEquals(true, repeatedSubstringPattern("abaababaab"));
+        Assert.assertTrue(repeatedSubstringPattern("abcabcabcabc"));
+        Assert.assertTrue(repeatedSubstringPattern("abaababaab"));
     }
 
 }
