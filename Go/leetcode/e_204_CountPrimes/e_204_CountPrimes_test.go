@@ -1,4 +1,4 @@
-package e_204_CountPrimes
+package main
 
 import (
 	"github.com/stretchr/testify/assert"

@@ -1,10 +1,11 @@
-package e_204_CountPrimes
+package main
 
 import (
+	"fmt"
 	"math"
 )
 
-//Problem Title
+//204: Count Primes
 //Show Topic Tags
 
 /**
@@ -30,7 +31,7 @@ import (
 //******************************************************************************************************************
 
 func main() {
-
+	fmt.Println(countPrimes(10))
 }
 
 func countPrimes(n int) int {
