@@ -1,6 +1,6 @@
 package com.g4g.school;
 
-import javarepl.internal.totallylazy.Strings;
+
 
 import java.util.Objects;
 import java.util.Scanner;

@@ -3,8 +3,8 @@ package com.leetcode;
 //e_566_ReshapeTheMatrix
 //Show Topic Tags
 
-import com.leetcode.shared.Matrix;
-import com.sun.tools.javac.util.Pair;
+//import com.leetcode.shared.Matrix;
+
 
 import java.util.Arrays;
 
@@ -61,30 +61,30 @@ public class e_566_ReshapeTheMatrix {
 
     public static void main(String[] args) {
 
-
-        int[][] r = new e_566_ReshapeTheMatrix().matrixReshape(new int[][]{
-                {1,2},
-                {3,4}
-        }, 1, 4);
-
-
-        System.out.println(Matrix.toString(r));
-
-        r = new e_566_ReshapeTheMatrix().matrixReshape(new int[][]{
-                {1,2},
-                {3,4}
-        }, 4, 1);
-
-
-        System.out.println(Matrix.toString(r));
-
-        r = new e_566_ReshapeTheMatrix().matrixReshape(new int[][]{
-                {1,2},
-                {3,4}
-        }, 4, 3);
-
-
-        System.out.println(Matrix.toString(r));
+//
+//        int[][] r = new e_566_ReshapeTheMatrix().matrixReshape(new int[][]{
+//                {1,2},
+//                {3,4}
+//        }, 1, 4);
+//
+//
+//        System.out.println(Matrix.toString(r));
+//
+//        r = new e_566_ReshapeTheMatrix().matrixReshape(new int[][]{
+//                {1,2},
+//                {3,4}
+//        }, 4, 1);
+//
+//
+//        System.out.println(Matrix.toString(r));
+//
+//        r = new e_566_ReshapeTheMatrix().matrixReshape(new int[][]{
+//                {1,2},
+//                {3,4}
+//        }, 4, 3);
+//
+//
+//        System.out.println(Matrix.toString(r));
 
 
 
