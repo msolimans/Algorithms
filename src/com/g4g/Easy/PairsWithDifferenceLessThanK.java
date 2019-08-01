@@ -85,8 +85,10 @@ public class PairsWithDifferenceLessThanK {
         HashSet<Integer> set = new HashSet<>();
 
         for(int i: arr){
-            Math.abs(k - i)
+            Math.abs(k - i);
         }
+
+        return 1;
 
 
     }
