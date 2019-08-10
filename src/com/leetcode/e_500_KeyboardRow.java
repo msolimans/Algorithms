@@ -1,4 +1,4 @@
-package com.leetcode.hashtable;
+package com.leetcode;
 
 import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 
