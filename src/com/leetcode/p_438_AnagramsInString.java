@@ -1,4 +1,4 @@
-package com.leetcode.hashtable;
+package com.leetcode;
 
 /**
  * Created by msoliman on 5/4/17.
