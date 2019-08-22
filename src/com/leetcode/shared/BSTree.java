@@ -8,6 +8,17 @@ public class BSTree {
         root = new TreeNode(i);
     }
 
+    public BSTree(int[] is) {
+        if (is.length == 0)
+            root = null;
+        else {
+            root = new TreeNode(is[0]);
+            for (int i = 1; i < is.length; i++) {
+                insert(is[i]);
+            }
+        }
+    }
+
     public BSTree() {
         root = null;
     }
