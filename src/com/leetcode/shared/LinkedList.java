@@ -31,5 +31,18 @@ public class LinkedList {
         tail = n.next;
     }
 
+    public ListNode pollFirst() throws Exception {
+        if(root == null){
+            throw  new Exception("empty!");
+        }
+
+        ListNode n = root;
+        root = root.next;
+        return n;
+    }
+
+    public boolean empty() {
+        return root == null;
+    }
 
 }
