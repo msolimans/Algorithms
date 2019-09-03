@@ -3,14 +3,12 @@ package com.leetcode;
 //e_637_AverageofLevelsinBinaryTree
 //Show Topic Tags
 
-import com.leetcode.shared.BSTree;
-import com.leetcode.shared.Queue;
+
 import com.leetcode.shared.TreeNode;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
