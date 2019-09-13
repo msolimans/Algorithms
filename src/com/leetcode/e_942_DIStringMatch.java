@@ -64,10 +64,9 @@ public class e_942_DIStringMatch {
         //we can't make <= length as it will raise out of range exception
         while (i < S.length()) {
             if (S.charAt(i) == 'I')
-                res[i] = lo++;
+                res[i++] = lo++;
             else
-                res[i] = hi--;
-            i++;
+                res[i++] = hi--;
         }
 
 
