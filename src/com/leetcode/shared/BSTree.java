@@ -1,5 +1,8 @@
 package com.leetcode.shared;
 
+
+import java.util.LinkedList;
+
 public class BSTree {
     //Implementation of BST [Not part of solution, used for simplifying and writing test cases only]
     public TreeNode root = null;
@@ -55,4 +58,21 @@ public class BSTree {
         }
     }
 
+    @Override
+    public String toString() {
+        java.util.Queue<TreeNode> queue = new LinkedList<>();
+        StringBuilder builder = new StringBuilder();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            TreeNode t = queue.poll();
+            builder.append(t.val);
+
+            if (t.left != null)
+                queue.add(t.left);
+            if (t.right != null)
+                queue.add(t.right);
+        }
+
+        return builder.toString();
+    }
 }
