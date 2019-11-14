@@ -99,12 +99,46 @@ public class e_985_SumofEvenNumbersAfterQueries {
 
     }
 
+    //More Efficient one!
+    //Simple idea, within the loop
+    //  1) check if the elem is even, subtract it from accumlative sum
+    //  2) add the new value
+    //  3) add it again only in case the new value is still even
+    public int[] sumEvenAfterQueries2(int[] A, int[][] queries) {
+
+        int sum = 0;
+        //calc even numbers
+        for (int i : A) {
+            if (i % 2 == 0)
+                sum += i;
+        }
+
+        int[] result = new int[queries.length];
+        int i = 0;
+
+        for (int[] item : queries) {
+            int val = item[0], index = item[1];
+
+            if (A[index] % 2 == 0)//if current elem is even, remove it from sum
+                sum -= A[index];
+            A[index] += val;//add val
+            if (A[index] % 2 == 0)//if even after addition, add new val
+                sum += A[index];
+            result[i++] = sum;
+        }
+
+        return result;
+
+    }
+
+
     @Test
     public void TestsumEvenAfterQueries() {
 
         Assert.assertArrayEquals(new int[]{}, sumEvenAfterQueries(new int[]{}, new int[][]{{1, 0}, {-3, 1}, {-4, 0}, {2, 3}}));
         Assert.assertArrayEquals(new int[]{}, sumEvenAfterQueries(new int[]{1, 2, 3, 4}, new int[][]{}));
         Assert.assertArrayEquals(new int[]{8, 6, 2, 4}, sumEvenAfterQueries(new int[]{1, 2, 3, 4}, new int[][]{{1, 0}, {-3, 1}, {-4, 0}, {2, 3}}));
+        Assert.assertArrayEquals(new int[]{8, 6, 2, 4}, sumEvenAfterQueries2(new int[]{1, 2, 3, 4}, new int[][]{{1, 0}, {-3, 1}, {-4, 0}, {2, 3}}));
     }
 
 }
