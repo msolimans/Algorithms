@@ -54,16 +54,37 @@ public class AdjacencyListGraph {
         }
     }
 
+    public boolean hasPath(int sourceId, int destId) {
+        Stack<GNode> stack = new Stack<>();
+        GNode source = getNode(sourceId);
+        stack.add(source);
+        GNode dest = getNode(destId);
+        Set<Integer> visited = new HashSet<>();
+        while (!stack.isEmpty()) {
+            GNode node = stack.pop();
+            if (node == dest)
+                return true;
+            if (visited.contains(node.Id))
+                continue;
+            for (GNode child : node.adjacent) {
+                stack.add(child);
+            }
 
-    public boolean hasPath(int sourceId, int desId) {
+        }
+
+        return false;
+    }
+
+
+    public boolean hasPathRecursive(int sourceId, int desId) {
         Set<Integer> visited = new HashSet<>();
         GNode source = getNode(sourceId);
         GNode des = getNode(desId);
 
-        return hasPath(source, des, visited);
+        return hasPathRecursive(source, des, visited);
     }
 
-    private boolean hasPath(GNode source, GNode dest, Set<Integer> visited) {
+    private boolean hasPathRecursive(GNode source, GNode dest, Set<Integer> visited) {
         if (visited.contains(source.Id))
             return false;
         visited.add(source.Id);
@@ -71,7 +92,7 @@ public class AdjacencyListGraph {
             return true;
 
         for (GNode child : source.adjacent) {
-            if (hasPath(child, dest, visited))
+            if (hasPathRecursive(child, dest, visited))
                 return true;
         }
 
@@ -175,9 +196,6 @@ public class AdjacencyListGraph {
     }
 
 
-
-
-
     @Test
     public void TestHasPath() {
         AdjacencyListGraph graph = new AdjacencyListGraph();
@@ -195,8 +213,13 @@ public class AdjacencyListGraph {
         });
 
         Assert.assertTrue(graph.hasPath(0, 3));
-//        Assert.assertTrue(graph.hasPath(2, 3));
-//        Assert.assertFalse(graph.hasPath(1, 2));
+        Assert.assertTrue(graph.hasPath(2, 3));
+        Assert.assertFalse(graph.hasPath(1, 2));
+
+        Assert.assertTrue(graph.hasPathRecursive(0, 3));
+        Assert.assertTrue(graph.hasPathRecursive(2, 3));
+        Assert.assertFalse(graph.hasPathRecursive(1, 2));
+
 
     }
 }
