@@ -250,12 +250,13 @@ public class e_189_RotateArray {
 
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //Solution 6: Same as solution 5 but in a recursive way
+    //Solution 5: Same as solution 5 but in a recursive way
     public void rotate5(int[] nums, int k) {
 
-        int count = 0;
-        for (int i = 0; count < nums.length; i++) {
+        int count = 0, i = 0;
+        while (i < nums.length && count < nums.length) {
             count += rotate5(nums, i, k, (i + k) % nums.length, nums[i]);
+            i++;
         }
 
     }
