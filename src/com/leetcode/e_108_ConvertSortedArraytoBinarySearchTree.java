@@ -45,28 +45,34 @@ public class e_108_ConvertSortedArraytoBinarySearchTree {
 
     }
 
+    //used for 1st solution where we save root node to be returned as result
     TreeNode root;
 
+    //used to insert elems in the binary seach tree
     public void insert(int val) {
         if (root == null) {
             root = new TreeNode(val);
             return;
         }
 
+        //find where to insert node
         TreeNode current = root;
         while (true) {
+            //if it is less than current node, go left
             if (val < current.val) {
+                //if left is null add it under this current node and break
                 if (current.left == null) {
                     current.left = new TreeNode(val);
                     break;
-                } else {
+                } else {//otherwise continue traversing in the left subtree
                     current = current.left;
                 }
             } else {
+                //if it is greater than current node's val, check if right is null add it as a right subtree under current node and break
                 if (current.right == null) {
                     current.right = new TreeNode(val);
                     break;
-                } else {
+                } else {//otherwise continue traversing the right subtree
                     current = current.right;
                 }
 
@@ -78,21 +84,24 @@ public class e_108_ConvertSortedArraytoBinarySearchTree {
     //O(nlogn) solution
     //every time we add elem, it tries to find its proper location in O(logn)
     //we have n elems so overall time complexity is O(nlogn)
-    public TreeNode sortedArrayToBST(int[] nums) {
+    public TreeNode sortedArrayToBST(int[] nums) {//
         sortedArrayToBST(nums, 0, nums.length - 1);
         return root;
     }
 
 
     void sortedArrayToBST(int[] nums, int start, int end) {
+        //if start is greater than end or we are out of the boundary of the array, we terminate recursion
         if (start > end || start < 0 || end > nums.length - 1)
             return;
 
+        //if we have start equals end, means we have only one elm in sub array, just add it and terminate recursion
         if (start == end) {
             insert(nums[start]);
             return;
         }
 
+        //find the mid elem, insert it and recursively continue visiting left and right subarrays
         int mid = (start + end) / 2;
         insert(nums[mid]);
 
@@ -131,18 +140,25 @@ public class e_108_ConvertSortedArraytoBinarySearchTree {
 
 
     TreeNode sortedArrayToBST2(int[] nums, int start, int end) {
+        //if we're out of boundary of array, terminate recursion
         if (start > end || start < 0 || end > nums.length - 1)
             return null;
 
+        //if we have one elem in subarray just return it
         if (start == end) {
             return new TreeNode(nums[start]);
         }
 
+        //calc the mid of array
         int mid = (start + end) / 2;
+        //create a node for it
         TreeNode node = new TreeNode(nums[mid]);
 
+        //recursively, divide and conquer left and right subarrays and link the result to the above created node.
         node.left = sortedArrayToBST2(nums, start, mid - 1);
         node.right = sortedArrayToBST2(nums, mid + 1, end);
+
+        //this should bubble up, return the root node
         return node;
     }
 
