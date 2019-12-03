@@ -49,32 +49,42 @@ public class e_1099_TwoSumLessThanK {
 
 
     public static void main(String[] args) {
-        System.out.println(new e_1099_TwoSumLessThanK().twoSumLessThanK(new int[]{2,10,3,2,8,0,30}, 60));
+        System.out.println(new e_1099_TwoSumLessThanK().twoSumLessThanK(new int[]{2, 10, 3, 2, 8, 0, 30}, 60));
     }
 
     public int twoSumLessThanK(int[] A, int K) {
+        //we know if its length is 1, we can't form 2 numbers so we return -1
+        if (A.length <= 1) {
+            return -1;
+        }
+
+        //sort array
         Arrays.sort(A);
 
+        //2 points to keep track of positions
         int s = 0, e = A.length - 1;
         int max = Integer.MIN_VALUE;
         while (s < e) {
-            //if it is greater than K, move end point to left
-            if (A[s] + A[e] > K) {
+            //if it is greater than or equal to K, just move end point to left
+            if (A[s] + A[e] >= K) {
                 e--;
             } else {
-                //less than k, move s to right
+                //less than k
+                // 1) compare sum of current elems with max and update it if current combination is greater than max
+                // 2) move s to right to check other combinations
                 if (A[s] + A[e] > max)
                     max = A[s] + A[e];
                 s++;
             }
         }
 
-        return max == Integer.MIN_VALUE ? -1: max;
+        return max == Integer.MIN_VALUE ? -1 : max;
     }
 
     @Test
     public void TestTwoSumLessThanK() {
         Assert.assertEquals(58, twoSumLessThanK(new int[]{34, 23, 1, 24, 75, 33, 54, 8}, 60));
+        Assert.assertEquals(198, twoSumLessThanK(new int[]{254, 914, 110, 900, 147, 441, 209, 122, 571, 942, 136, 350, 160, 127, 178, 839, 201, 386, 462, 45, 735, 467, 153, 415, 875, 282, 204, 534, 639, 994, 284, 320, 865, 468, 1, 838, 275, 370, 295, 574, 309, 268, 415, 385, 786, 62, 359, 78, 854, 944}, 200));
 
     }
 
