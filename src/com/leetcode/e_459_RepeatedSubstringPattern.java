@@ -46,6 +46,8 @@ public class e_459_RepeatedSubstringPattern {
     }
 
     public boolean repeatedSubstringPattern2(String s) {
+        if (s.length() == 1)
+            return true;
 
         int w = 1;
         //construct a window
@@ -61,10 +63,10 @@ public class e_459_RepeatedSubstringPattern {
 
             //compare other strings
             for (int i = 0; i <= s.length() - w; i += w) {
-                if(!s.substring(i, i+w).equals(s1))
+                if (!s.substring(i, i + w).equals(s1))
                     break;
                 //if it is the last elem in the array, we got a match
-                if(i == s.length()  - w)
+                if (i == s.length() - w)
                     return true;
             }
 
@@ -136,12 +138,18 @@ public class e_459_RepeatedSubstringPattern {
         Assert.assertTrue(repeatedSubstringPattern("abcabcabcabc"));
         Assert.assertTrue(repeatedSubstringPattern("abaababaab"));
 
+        //////////////////////////////////////////
 
         Assert.assertTrue(repeatedSubstringPattern2("abab"));
         Assert.assertFalse(repeatedSubstringPattern2("abac"));
         Assert.assertFalse(repeatedSubstringPattern2("aba"));
         Assert.assertTrue(repeatedSubstringPattern2("abcabcabcabc"));
         Assert.assertTrue(repeatedSubstringPattern2("abaababaab"));
+        Assert.assertTrue(repeatedSubstringPattern2("acxacxacx"));
+        Assert.assertFalse(repeatedSubstringPattern2("acxaxc"));
+        Assert.assertTrue(repeatedSubstringPattern2("a"));
+        Assert.assertFalse(repeatedSubstringPattern2("abbbva"));
+        Assert.assertTrue(repeatedSubstringPattern2("aaaa"));
 
     }
 
