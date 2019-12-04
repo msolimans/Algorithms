@@ -75,8 +75,8 @@
 -- ******************************************************************************************************************
 
 # Write your MySQL query statement below
-SELECT Salary as SecondHighestSalary
+SELECT ( --outer select to handle such input where we need to output null in case we have only one record {"headers": {"Employee": ["Id", "Salary"]}, "rows": {"Employee": [[1, 100]]}}
+SELECT DISTINCT Salary -- disinct is used to discard duplicates in case we have 2 rows with the same salary {"headers": {"Employee": ["Id", "Salary"]}, "rows": {"Employee": [[1, 100], [2, 100]]}}
 FROM Employee
 ORDER BY Salary DESC
-LIMIT 1 OFFSET 1
-
+LIMIT 1 OFFSET 1) SecondHighestSalary
