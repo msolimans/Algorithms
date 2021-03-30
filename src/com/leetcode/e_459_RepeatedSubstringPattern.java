@@ -34,7 +34,7 @@ import org.junit.Test;
 //        Output: True
 //        Explanation: It's the substring "abc" four times. (And the substring "abcabc" twice.)
 //******************************************************************************************************************
-//Companies: N/A
+//Companies: Google
 //******************************************************************************************************************
 //Link: https://leetcode.com/problems/repeated-substring-pattern/
 //******************************************************************************************************************
@@ -43,6 +43,40 @@ import org.junit.Test;
 public class e_459_RepeatedSubstringPattern {
     public static void main(String[] args) {
         System.out.println(new e_459_RepeatedSubstringPattern().repeatedSubstringPattern("abcabcabcabc"));
+    }
+
+    public boolean repeatedSubstringPattern2(String s) {
+        if (s.length() == 1)
+            return true;
+
+        int w = 1;
+        //construct a window
+        while (w <= s.length() / 2) {//at max 2 halfs
+            //if window doesn't make equal window sizes, just increase its size
+            if (s.length() % w != 0) {
+                w++;
+                continue;
+            }
+
+            //make sure we have window divisible by window
+            String s1 = s.substring(0, w);
+
+            //compare other strings
+            for (int i = 0; i <= s.length() - w; i += w) {
+                if (!s.substring(i, i + w).equals(s1))
+                    break;
+                //if it is the last elem in the array, we got a match
+                if (i == s.length() - w)
+                    return true;
+            }
+
+            w++;
+        }
+
+        //no matches found, return false
+        return false;
+
+
     }
 
     public boolean repeatedSubstringPattern(String s) {
@@ -68,12 +102,12 @@ public class e_459_RepeatedSubstringPattern {
                 str.append(s.charAt(i));
 
                 //we collected a full window
-                if ((i+1) % window == 0) {
+                if ((i + 1) % window == 0) {
 
                     //check if the current window is similar to the previous one, if not break
                     if (prevstr.length() != 0 && !prevstr.toString().equals(str.toString())) {
-                        prevstr=new StringBuilder();
-                        str=new StringBuilder();
+                        prevstr = new StringBuilder();
+                        str = new StringBuilder();
                         break;
                     }
 
@@ -85,7 +119,7 @@ public class e_459_RepeatedSubstringPattern {
                     //else continue checking more windows
                     prevstr = str;
                     //reset current str window
-                    str=new StringBuilder();
+                    str = new StringBuilder();
                 }
             }
 
@@ -103,6 +137,20 @@ public class e_459_RepeatedSubstringPattern {
         Assert.assertFalse(repeatedSubstringPattern("aba"));
         Assert.assertTrue(repeatedSubstringPattern("abcabcabcabc"));
         Assert.assertTrue(repeatedSubstringPattern("abaababaab"));
+
+        //////////////////////////////////////////
+
+        Assert.assertTrue(repeatedSubstringPattern2("abab"));
+        Assert.assertFalse(repeatedSubstringPattern2("abac"));
+        Assert.assertFalse(repeatedSubstringPattern2("aba"));
+        Assert.assertTrue(repeatedSubstringPattern2("abcabcabcabc"));
+        Assert.assertTrue(repeatedSubstringPattern2("abaababaab"));
+        Assert.assertTrue(repeatedSubstringPattern2("acxacxacx"));
+        Assert.assertFalse(repeatedSubstringPattern2("acxaxc"));
+        Assert.assertTrue(repeatedSubstringPattern2("a"));
+        Assert.assertFalse(repeatedSubstringPattern2("abbbva"));
+        Assert.assertTrue(repeatedSubstringPattern2("aaaa"));
+
     }
 
 }

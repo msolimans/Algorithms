@@ -53,9 +53,34 @@ public class e_53_MaximumSubarray {
         return globalMax;
     }
 
+    public int maxSubArray2(int[] nums) {
+
+
+        //Kadane's Algorthms
+        //max of current index is the either the current element or the max of previous elem + current element
+        //max of contiguous array vs global max of any previous contiguous array
+
+        int lmax = nums[0], gmax = nums[0];
+        for(int i =1;i<nums.length;i++) {
+            lmax = Math.max(nums[i], nums[i] + lmax);
+            if(lmax > gmax)
+                gmax = lmax;
+        }
+
+        return gmax;
+    }
+
+
     @Test
     public void TestMaxSubArray() {
         Assert.assertEquals(6, maxSubArray(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4}));
         Assert.assertEquals(6, maxSubArray(new int[]{1, 2, -1, -2, 2, 1, -2, 1, 4, -5, 4}));
+
+        Assert.assertEquals(6, maxSubArray2(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4}));
+        Assert.assertEquals(6, maxSubArray2(new int[]{1, 2, -1, -2, 2, 1, -2, 1, 4, -5, 4}));
+
+
+
+
     }
 }

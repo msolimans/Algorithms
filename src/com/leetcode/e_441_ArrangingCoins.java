@@ -40,7 +40,7 @@ import org.junit.Test;
 //
 //Because the 4th row is incomplete, we return 3.
 //******************************************************************************************************************
-//Companies: N/A
+//Companies: GoDaddy | 2
 //******************************************************************************************************************
 //Link: https://leetcode.com/problems/arranging-coins/
 //******************************************************************************************************************
@@ -75,5 +75,34 @@ public class e_441_ArrangingCoins {
         Assert.assertEquals(2, arrangeCoins(5));
         Assert.assertEquals(3, arrangeCoins(8));
     }
+
+
+    // 1 + 2 + 3 + ... + (n - 1) + n = n(n + 1)/2
+    // eg: 1 + 2 + 3 + 4 = n(n + 1)/2
+    // therefore, n(n + 1)/2 = 10;
+    // n^2 + n = 10 * 2
+    // n^2 + n + (-2)*10 = 0
+    // generalizing => n^2 + n + (-2)*c = 0;
+    // quadratic equations=> [-1 (+/-) Sq.Root(b^2 - 4ac)] / 2a
+    // Test #1 given 10::
+    // for 1 + 2 + 3 + 4 = 10 => n^2 + n + (-2)*10 = 0;
+    // root #1 = (-1 + root(1 - 4*(-2)*10)) / 2
+    //         = (-1 + root(1 + 8a)) / 2 => ** pattern **
+    //         = (-1 + root(81)) / 2
+    //         = (-1 + 9) / 2
+    //         = 4
+    // Test #2 given 8::
+    // n^2 + n + (-2)*8 = 0;
+    // root #1 = (-1 + root(1 - 4*(-2)*8)) / 2
+    //         = (-1 + root(1 + 8a)) / 2 => ** pattern **
+    //         = (-1 + root(65)) / 2
+    //         = (-1 + 8.06) / 2
+    //         = (int) 7.06 / 2
+    //         = 3
+
+    // return (int) (-1 + Math.sqrt(1 + 8 * n)) / 2;
+    // We need a long conversion to prevent overflow
+
+    // return (int) (-1 + Math.sqrt(1 + 8L * n)) / 2;
 
 }
