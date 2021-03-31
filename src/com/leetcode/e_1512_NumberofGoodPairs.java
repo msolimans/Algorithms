@@ -36,6 +36,7 @@ import java.util.Map;
 //
 //1 <= nums.length <= 100
 //1 <= nums[i] <= 100
+//https://leetcode.com/problems/number-of-good-pairs/submissions/
 public class e_1512_NumberofGoodPairs {
     public int numIdenticalPairs(int[] nums) {
         //record elems with number of occurrences
