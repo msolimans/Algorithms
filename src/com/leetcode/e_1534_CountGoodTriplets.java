@@ -35,6 +35,8 @@ import org.junit.Test;
 //3 <= arr.length <= 100
 //0 <= arr[i] <= 1000
 //0 <= a, b, c <= 1000
+
+//https://leetcode.com/problems/count-good-triplets/
 public class e_1534_CountGoodTriplets {
     //brute force soln with simple optimization
     public int countGoodTriplets(int[] arr, int a, int b, int c) {
