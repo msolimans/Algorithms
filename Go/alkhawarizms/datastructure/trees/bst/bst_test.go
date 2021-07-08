@@ -32,3 +32,19 @@ func TestBSTNode_Insert(t *testing.T) {
 	assert.True(t, n.left.value == 5)
 
 }
+
+func TestBSTNode_Lookup(t *testing.T) {
+
+	bstree := NewBSTree()
+	err := bstree.Insert(10)
+	assert.Nil(t, err)
+	assert.True(t, bstree.Lookup(10))
+	_ = bstree.Insert(5)
+	_ = bstree.Insert(11)
+	_ = bstree.Insert(20)
+	_ = bstree.Insert(2)
+	_ = bstree.Insert(1)
+	assert.True(t, bstree.Lookup(1))
+	assert.False(t, bstree.Lookup(0))
+
+}
