@@ -1,8 +1,11 @@
 package bst
 
 import (
+	"fmt"
+	"github.com/golang-collections/collections/queue"
 	"github.com/golang-collections/collections/stack"
 	"github.com/pkg/errors"
+	"strings"
 )
 
 //Number of nodes in each level 2^Level_Index
@@ -62,6 +65,57 @@ func (b *bsTree) Insert(value int) error {
 	}
 
 	return b.root.Insert(value)
+}
+
+func (b *bsTree) DepthFirstTraverse() string {
+	str := strings.Builder{}
+	stack := stack.New()
+	if b.root != nil {
+		stack.Push(b.root)
+	}
+
+	for stack.Len() != 0 {
+		node := stack.Pop().(*BSTNode)
+
+		str.WriteString(fmt.Sprintf("%d", node.value))
+
+		if node.right != nil {
+			stack.Push(node.right)
+		}
+
+		if node.left != nil {
+			stack.Push(node.left)
+		}
+
+	}
+	return str.String()
+
+}
+
+//level by level traversal
+func (b *bsTree) BreadthFirstTraverse() string {
+	str := strings.Builder{}
+	queue := queue.New()
+	if b.root != nil {
+		queue.Enqueue(b.root)
+	}
+
+	for queue.Len() != 0 {
+		node := queue.Dequeue().(*BSTNode)
+
+		str.WriteString(fmt.Sprintf("%d", node.value))
+
+		if node.left != nil {
+			queue.Enqueue(node.left)
+		}
+
+		if node.right != nil {
+			queue.Enqueue(node.right)
+		}
+
+	}
+	return str.String()
+
 }
 
 func (b *BSTNode) Insert(value int) error {

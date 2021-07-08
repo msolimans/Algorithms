@@ -48,3 +48,30 @@ func TestBSTNode_Lookup(t *testing.T) {
 	assert.False(t, bstree.Lookup(0))
 
 }
+
+func newBSTree() *bsTree {
+	bsTree := NewBSTree()
+	bsTree.Insert(10)
+	bsTree.Insert(5)
+	bsTree.Insert(11)
+	bsTree.Insert(2)
+	bsTree.Insert(1)
+
+	////////////////////////////////////
+	//		10
+	//	  5		11
+	//	2
+	//1
+	////////////////////////////////////
+	return bsTree
+}
+
+func TestBsTree_DepthFirstTraverse(t *testing.T) {
+	bsTree := newBSTree()
+	assert.Equal(t, "1052111", bsTree.DepthFirstTraverse())
+}
+
+func TestBsTree_BreadthFirstTraverse(t *testing.T) {
+	bsTree := newBSTree()
+	assert.Equal(t, "1051121", bsTree.BreadthFirstTraverse())
+}
