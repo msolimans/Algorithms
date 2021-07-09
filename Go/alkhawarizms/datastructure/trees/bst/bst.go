@@ -139,3 +139,99 @@ func (b *BSTNode) Insert(value int) error {
 
 	return nil
 }
+
+func (b *bsTree) Remove(value int) bool {
+	//find element first and keep track of its parent
+	//do one of three operations:
+	//1 node doesn't have right node
+	//2 node has right child (right child doesn't have left child)
+	//3 node has right child (right child has left child)
+	current := b.root
+	var parent *BSTNode = nil
+	for current != nil {
+		//not found
+		if value < current.value {
+			parent = current
+			current = current.left
+		} else if value > current.value {
+			parent = current
+			current = current.right
+		} else { //found
+
+			if current.right == nil {
+				//current is the root itself
+				if parent == nil {
+					b.root = current.left
+				} else if current.value < parent.value { //in the left
+					parent.left = current.left
+				} else {
+					parent.right = current.left
+				}
+			} else if current.right != nil && current.right.left == nil { //there's right but no right's left child
+				if parent == nil {
+					tmp := b.root.left //preserve left child
+					b.root = current.right
+					b.root.left = tmp //return left child
+					//current.right.left = current.left //whatever in the left side
+					//		4
+					//	3		5
+					//remove 4 =>
+					//		5
+					//	3
+				} else if current.value < parent.value { //in the left
+					//		 		6
+					//	 		4
+					//		3		5
+					//remove 4
+
+					parent.left = current.right
+					parent.left.left = current.left
+
+				} else {
+
+					//		2
+					//	1		4
+					//		3		5
+
+					parent.right = current.right
+					parent.right.left = current.left
+				}
+			} else {
+				//go one step right and then all way down to the left (gives us the smallest number in this case)
+				smallestParent := current.right
+				smallest := current.right.left
+				//while we have left childs, we continue moving on
+				for smallest.left != nil {
+					smallestParent = smallest
+					smallest = smallest.left
+				}
+
+				//		2
+				//	1		4
+				//		3		5
+				//remove 2
+
+				//take care of right part of the smallest since we know that it doesn't have any left childs so we only care about right
+				//put it under smallestParent
+				smallestParent.left = smallest.right
+				//then we move smallest to the main node
+				smallest.left = current.left
+				smallest.right = current.right
+
+				//adjust parent to make sure we have parent pointing to the new node (smallest)
+				if parent == nil {
+					b.root = smallest
+				} else if current.value < parent.value {
+					parent.left = smallest
+				} else {
+					parent.right = smallest
+				}
+
+			}
+
+			return true
+		}
+	}
+
+	return false
+}

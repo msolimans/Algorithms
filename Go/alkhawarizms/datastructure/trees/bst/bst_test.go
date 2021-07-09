@@ -75,3 +75,47 @@ func TestBsTree_BreadthFirstTraverse(t *testing.T) {
 	bsTree := newBSTree()
 	assert.Equal(t, "1051121", bsTree.BreadthFirstTraverse())
 }
+
+func TestBsTree_Remove(t *testing.T) {
+	bsTree := newBSTree()
+	assert.Equal(t, "1051121", bsTree.BreadthFirstTraverse())
+	//			10
+	//		5		11
+	//	2
+	//1
+
+	////////////////////////////////
+	bsTree = newBSTree()
+	assert.True(t, bsTree.Remove(5))
+	assert.Equal(t, "102111", bsTree.BreadthFirstTraverse())
+
+	////////////////////////////////
+	bsTree = newBSTree()
+	bsTree.Insert(7)
+	assert.True(t, bsTree.Remove(5))
+	assert.Equal(t, "1071121", bsTree.BreadthFirstTraverse())
+
+	////////////////////////////////
+	bsTree = newBSTree()
+	bsTree.Insert(7)
+	bsTree.Insert(6)
+	assert.True(t, bsTree.Remove(5))
+	assert.Equal(t, "10611271", bsTree.BreadthFirstTraverse())
+
+	////////////////////////////////
+	bsTree = newBSTree()
+	bsTree.Insert(7)
+	bsTree.Insert(6)
+	assert.True(t, bsTree.Remove(7))
+	assert.Equal(t, "10511261", bsTree.BreadthFirstTraverse())
+	////////////////////////////////
+	bsTree = newBSTree()
+
+	assert.True(t, bsTree.Remove(5))
+	assert.True(t, bsTree.Remove(2))
+	assert.Equal(t, "10111", bsTree.BreadthFirstTraverse())
+	////////////////////////////////
+	bsTree = newBSTree()
+	assert.True(t, bsTree.Remove(11))
+	assert.Equal(t, "10521", bsTree.BreadthFirstTraverse())
+}
